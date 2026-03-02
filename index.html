@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -11,42 +11,59 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
 body{background:black;color:white;overflow-x:hidden;}
 
-/* PRELOADER */
-#preloader{
-position:fixed;width:100%;height:100vh;background:black;
-display:flex;justify-content:center;align-items:center;
-flex-direction:column;z-index:9999;
+/* BURGER */
+.burger{
+position:fixed;top:20px;left:20px;
+font-size:30px;cursor:pointer;z-index:3000;
 }
-#preloader img{width:140px;max-width:80%;}
+.side-menu{
+position:fixed;top:0;left:-250px;
+width:250px;height:100vh;
+background:#111;padding:40px 20px;
+transition:0.3s;z-index:2500;
+}
+.side-menu a{
+display:block;color:white;
+text-decoration:none;margin:20px 0;
+font-weight:600;
+}
+.side-menu.open{left:0;}
 
 /* HERO */
 .hero{
 height:100vh;display:flex;justify-content:center;align-items:center;
-flex-direction:column;text-align:center;background-size:cover;
-background-position:center center;background-repeat:no-repeat;
-transition:opacity 2.5s ease-in-out;
+flex-direction:column;text-align:center;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("images/bg1.jpg");
+background-size:cover;background-position:center;
 padding:0 20px;
 }
-.hero h1{font-size:70px;font-weight:900;letter-spacing:6px;}
-.countdown{margin-top:25px;font-size:28px;font-weight:600;}
+.hero h1{font-size:60px;font-weight:900;letter-spacing:6px;}
+.countdown{margin-top:20px;font-size:24px;font-weight:600;}
 
 /* PRODUCTS */
 .products{
-padding:80px 10%;
+padding:60px 10%;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
+gap:30px;
 }
 .card{
-background:#111;padding:25px;border-radius:20px;transition:0.3s;
+background:#111;padding:20px;border-radius:20px;
 }
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 30px rgba(255,255,255,0.15);
+.price{margin-top:10px;font-weight:600;}
+.stock{margin-top:10px;font-size:14px;}
+
+.sizes{
+margin-top:15px;
+display:flex;flex-wrap:wrap;gap:8px;
 }
-.price{margin-top:10px;font-weight:600;font-size:18px;}
-.stock{margin-top:10px;animation:glow 1.5s infinite alternate;}
-@keyframes glow{from{opacity:0.4;}to{opacity:1;}}
+.size-btn{
+padding:6px 10px;background:#222;
+border:1px solid #444;color:white;
+cursor:pointer;font-size:12px;
+}
+.size-btn.active{background:white;color:black;}
+
 button{
 margin-top:15px;padding:10px;background:white;
 border:none;cursor:pointer;font-weight:600;width:100%;
@@ -55,262 +72,122 @@ border:none;cursor:pointer;font-weight:600;width:100%;
 /* CART */
 .cart{
 position:fixed;right:20px;bottom:20px;background:#111;
-padding:20px;border-radius:20px;width:260px;
+padding:20px;border-radius:20px;width:280px;
 box-shadow:0 0 20px rgba(255,255,255,0.1);
-z-index:1000;
 }
-.cart input{
-width:100%;padding:8px;margin-top:10px;
-background:#222;border:none;color:white;
+.cart-item{
+display:flex;justify-content:space-between;
+align-items:center;margin-top:10px;font-size:14px;
 }
-
-/* MUSIC PLAYER */
-.music-player{
-position:fixed;left:20px;bottom:260px;background:#111;
-padding:20px;border-radius:20px;text-align:center;width:190px;
-box-shadow:0 0 20px rgba(255,255,255,0.1);z-index:1000;
-}
-.music-player button{
-margin-top:10px;padding:8px 20px;background:white;
-border:none;cursor:pointer;font-weight:600;width:100%;
-}
-.vinyl{
-width:60px;height:60px;margin:auto;border-radius:50%;
-background:radial-gradient(circle,#444 20%,#000 60%);
-animation:spin 4s linear infinite;animation-play-state:paused;
-}
-@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-
-/* MODAL */
-.modal{
-display:none;position:fixed;z-index:2000;left:0;top:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.85);
-justify-content:center;align-items:center;
-padding:20px;
-}
-.modal-content{
-background:#111;padding:40px;border-radius:20px;
-width:100%;max-width:400px;text-align:center;
-position:relative;animation:fadeIn 0.3s ease-in-out;
-}
-@keyframes fadeIn{
-from{transform:scale(0.8);opacity:0;}
-to{transform:scale(1);opacity:1;}
-}
-.modal-logo{width:100px;margin-bottom:20px;max-width:60%;}
-.modal-total{margin-top:20px;font-size:20px;font-weight:600;}
-.kaspi{margin-top:20px;opacity:0.8;}
-.close{
-position:absolute;right:20px;top:15px;
-font-size:28px;cursor:pointer;
+.remove-btn{
+background:red;border:none;color:white;
+padding:3px 6px;cursor:pointer;font-size:12px;
 }
 
-footer{text-align:center;padding:40px;opacity:0.5;}
-
-/* ========================= */
-/* 📱 MOBILE ADAPTATION */
-/* ========================= */
-
-@media (max-width: 768px){
-
-.hero h1{
-font-size:36px;
-letter-spacing:3px;
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:32px;}
+.products{padding:40px 20px;}
+.cart{width:90%;right:5%;}
 }
-
-.countdown{
-font-size:18px;
-}
-
-.products{
-padding:40px 20px;
-gap:20px;
-}
-
-.card{
-padding:18px;
-}
-
-.cart{
-width:90%;
-right:5%;
-bottom:15px;
-}
-
-.music-player{
-width:90%;
-left:5%;
-bottom:180px;
-}
-
-.modal-content{
-padding:25px;
-}
-
-}
-
-@media (max-width: 480px){
-
-.hero h1{
-font-size:28px;
-}
-
-.countdown{
-font-size:16px;
-}
-
-button{
-padding:12px;
-font-size:14px;
-}
-
-.cart{
-font-size:14px;
-}
-
-}
-
 </style>
 </head>
 <body>
 
-<!-- PRELOADER -->
-<div id="preloader">
-<img src="images/logo.jpg">
-<p style="margin-top:15px;">LOADING ANKLEBREAK...</p>
+<div class="burger" onclick="toggleMenu()">☰</div>
+<div class="side-menu" id="sideMenu">
+<a href="#" onclick="alert('Instagram: @anklebreak.kz')">Контакты</a>
+<a href="#" onclick="alert('WhatsApp: +7-705-303-84-27')">WhatsApp</a>
 </div>
 
-<!-- HERO -->
-<section class="hero" id="hero">
+<section class="hero">
 <h1>ANKLEBREAK.KZ</h1>
 <div class="countdown" id="countdown"></div>
 </section>
 
-<!-- PRODUCTS -->
 <section class="products">
 
 <div class="card">
 <h3>Худи Suvene</h3>
 <p class="price">9 990 ₸</p>
 <p class="stock">Осталось 2 шт</p>
-<button onclick="addToCart('Худи Suvene',9990)">Добавить</button>
+<div class="sizes">
+<button class="size-btn" onclick="selectSize(this)">S</button>
+<button class="size-btn" onclick="selectSize(this)">M</button>
+<button class="size-btn" onclick="selectSize(this)">L</button>
+<button class="size-btn" onclick="selectSize(this)">XL</button>
+<button class="size-btn" onclick="selectSize(this)">2XL</button>
 </div>
-
-<div class="card">
-<h3>Polo Ralph Lauren Свитер</h3>
-<p class="price">9 990 ₸</p>
-<p class="stock">Осталось 2 шт</p>
-<button onclick="addToCart('Polo Ralph Lauren Свитер',9990)">Добавить</button>
+<button onclick="addToCart(this,'Худи Suvene',9990)">Добавить</button>
 </div>
 
 <div class="card">
 <h3>Штаны Suvene</h3>
 <p class="price">8 990 ₸</p>
 <p class="stock">Осталось 5 шт</p>
-<button onclick="addToCart('Штаны Suvene',8990)">Добавить</button>
+<div class="sizes">
+<button class="size-btn" onclick="selectSize(this)">S</button>
+<button class="size-btn" onclick="selectSize(this)">M</button>
+<button class="size-btn" onclick="selectSize(this)">L</button>
+<button class="size-btn" onclick="selectSize(this)">XL</button>
+<button class="size-btn" onclick="selectSize(this)">2XL</button>
 </div>
-
-<div class="card">
-<h3>Maison Margiela Gats</h3>
-<p class="price">16 990 ₸</p>
-<p class="stock">Осталось 1 шт</p>
-<button onclick="addToCart('Maison Margiela Gats',16990)">Добавить</button>
-</div>
-
-<div class="card">
-<h3>Кепка Brunello Cucinelli</h3>
-<p class="price">7 990 ₸</p>
-<p class="stock">Осталось 4 шт</p>
-<button onclick="addToCart('Кепка Brunello Cucinelli',7990)">Добавить</button>
-</div>
-
-<div class="card">
-<h3>Джинсы Сакура</h3>
-<p class="price">8 990 ₸</p>
-<p class="stock">Осталось 3 шт</p>
-<button onclick="addToCart('Джинсы Сакура',8990)">Добавить</button>
-</div>
-
-<div class="card">
-<h3>Носки Nike Elite</h3>
-<p class="price">1 250 ₸</p>
-<p class="stock">Осталось 5 пар</p>
-<button onclick="addToCart('Носки Nike Elite',1250)">Добавить</button>
-</div>
-
-<div class="card">
-<h3>Худи ANKLBRK</h3>
-<p class="price">10 990 ₸</p>
-<p class="stock">Осталось 2 шт</p>
-<button onclick="addToCart('Худи ANKLBRK',10990)">Добавить</button>
-</div>
-
-<div class="card">
-<h3>Saint Lorant Свитер</h3>
-<p class="price">9 990 ₸</p>
-<p class="stock">Осталось 1 шт</p>
-<button onclick="addToCart('Saint Lorant Свитер',9990)">Добавить</button>
+<button onclick="addToCart(this,'Штаны Suvene',8990)">Добавить</button>
 </div>
 
 </section>
 
-<!-- CART -->
-<div class="cart">
+<div class="cart" id="cart">
 <h3>Корзина</h3>
+<div id="cartItems"></div>
 <p>Сумма: <span id="total">0</span> ₸</p>
-<input type="text" id="promo" placeholder="Промокод">
-<button onclick="applyPromo()">Применить</button>
-<button onclick="openCheckout()">Оформить заказ</button>
 </div>
-
-<!-- MUSIC PLAYER -->
-<div class="music-player">
-<div class="vinyl"></div>
-<button onclick="toggleMusic()" id="musicBtn">PLAY</button>
-<p id="nowPlaying">Music Off</p>
-</div>
-<audio id="bgMusic"></audio>
-
-<!-- CHECKOUT MODAL -->
-<div id="checkoutModal" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeCheckout()">×</span>
-<img src="images/logo.jpg" class="modal-logo">
-<h2>Ваш заказ</h2>
-<div id="orderList"></div>
-<p class="modal-total">Итого: <span id="modalTotal"></span> ₸</p>
-<p class="kaspi">Kaspi перевод:<br>+7-705-303-84-27 Нұржан Ш.</p>
-</div>
-</div>
-
-<footer>© 2026 ANKLEBREAK</footer>
 
 <script>
+let total=0;
+let cartItems=[];
 
-/* PRELOADER */
-window.addEventListener("load",()=>{
-setTimeout(()=>{
-document.getElementById("preloader").style.display="none";
-},1200);
-});
-
-/* BACKGROUND SLIDER */
-const images=["images/bg1.jpg","images/bg2.jpg","images/bg3.jpg","images/bg4.jpg"];
-let currentBg=0;
-const hero=document.getElementById("hero");
-function changeBackground(){
-hero.style.opacity="0.3";
-setTimeout(()=>{
-hero.style.backgroundImage=
-`linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)), url(${images[currentBg]})`;
-hero.style.opacity="1";
-},400);
-currentBg++;
-if(currentBg>=images.length){currentBg=0;}
+function selectSize(btn){
+let parent=btn.parentElement;
+parent.querySelectorAll(".size-btn").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
 }
-changeBackground();
-setInterval(changeBackground,4000);
+
+function addToCart(button,name,price){
+let card=button.parentElement;
+let selectedSize=card.querySelector(".size-btn.active");
+if(!selectedSize){
+alert("Выберите размер");
+return;
+}
+let size=selectedSize.innerText;
+cartItems.push({name,price,size});
+total+=price;
+renderCart();
+}
+
+function renderCart(){
+let html="";
+cartItems.forEach((item,index)=>{
+html+=`
+<div class="cart-item">
+<span>${item.name} (${item.size})</span>
+<button class="remove-btn" onclick="removeItem(${index})">X</button>
+</div>`;
+});
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("total").innerText=total;
+}
+
+function removeItem(index){
+total-=cartItems[index].price;
+cartItems.splice(index,1);
+renderCart();
+}
+
+function toggleMenu(){
+document.getElementById("sideMenu").classList.toggle("open");
+}
 
 /* COUNTDOWN */
 const dropDate=new Date("March 11, 2026 20:00:00").getTime();
@@ -328,90 +205,7 @@ const s=Math.floor((distance%(1000*60))/1000);
 document.getElementById("countdown").innerHTML=
 "DROP через: "+d+"д "+h+"ч "+m+"м "+s+"с";
 },1000);
-
-/* CART */
-let total=0;
-let promoUsed=false;
-let cartItems=[];
-
-function addToCart(name,price){
-total+=price;
-cartItems.push({name,price});
-updateTotal();
-}
-
-function updateTotal(){
-document.getElementById("total").innerText=total;
-}
-
-function applyPromo(){
-let code=document.getElementById("promo").value;
-if(code==="SHARIP" && !promoUsed){
-total=Math.floor(total*0.9);
-promoUsed=true;
-updateTotal();
-alert("Промокод применён (-10%)");
-}else if(promoUsed){
-alert("Промокод уже использован");
-}else{
-alert("Неверный промокод");
-}
-}
-
-/* CHECKOUT */
-function openCheckout(){
-if(cartItems.length===0){alert("Корзина пуста");return;}
-document.getElementById("checkoutModal").style.display="flex";
-let orderHTML="";
-cartItems.forEach(item=>{
-orderHTML+=`<p>${item.name} — ${item.price} ₸</p>`;
-});
-document.getElementById("orderList").innerHTML=orderHTML;
-document.getElementById("modalTotal").innerText=total;
-}
-function closeCheckout(){
-document.getElementById("checkoutModal").style.display="none";
-}
-
-/* MUSIC PLAYER */
-const tracks=[
-"audio/track1.mp3","audio/track2.mp3","audio/track3.mp3",
-"audio/track4.mp3","audio/track5.mp3","audio/track6.mp3",
-"audio/track7.mp3","audio/track8.mp3","audio/track9.mp3",
-"audio/track10.mp3"
-];
-let currentTrack=0;
-let isPlaying=false;
-const audio=document.getElementById("bgMusic");
-const btn=document.getElementById("musicBtn");
-const vinyl=document.querySelector(".vinyl");
-const nowPlaying=document.getElementById("nowPlaying");
-
-function toggleMusic(){
-if(!isPlaying){
-audio.src=tracks[currentTrack];
-audio.play();
-btn.innerText="Пауза";
-vinyl.style.animationPlayState="running";
-nowPlaying.innerText="Сейчас играет: Track "+(currentTrack+1);
-isPlaying=true;
-}else{
-audio.pause();
-btn.innerText="Включить";
-vinyl.style.animationPlayState="paused";
-nowPlaying.innerText="нажмите чтобы включить музыку";
-isPlaying=false;
-}
-}
-audio.addEventListener("ended",()=>{
-currentTrack++;
-if(currentTrack>=tracks.length){currentTrack=0;}
-audio.src=tracks[currentTrack];
-audio.play();
-nowPlaying.innerText="Сейчас играет: Track "+(currentTrack+1);
-});
-
 </script>
-</body>
 
+</body>
 </html>
