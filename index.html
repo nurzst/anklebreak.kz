@@ -204,10 +204,92 @@ cursor:pointer;
 
 /* MOBILE */
 @media(max-width:768px){
-.hero h1{font-size:30px;}
-.products{padding:40px 20px;}
-.cart{width:90%;right:5%;}
-.music-player{width:90%;left:5%;bottom:180px;}
+
+/* HERO */
+.hero{
+height:70vh;
+padding:20px;
+}
+.hero h1{
+font-size:28px;
+letter-spacing:3px;
+}
+.countdown{
+font-size:16px;
+}
+
+/* PRODUCTS */
+.products{
+padding:30px 15px;
+gap:20px;
+}
+
+.card{
+padding:15px;
+border-radius:16px;
+}
+
+.card h3{
+font-size:18px;
+}
+
+.price{
+font-size:16px;
+}
+
+.size-btn{
+padding:8px 0;
+font-size:13px;
+}
+
+button{
+padding:12px;
+font-size:14px;
+}
+
+/* CART — превращаем в нижнюю панель */
+.cart{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+width:100%;
+border-radius:20px 20px 0 0;
+padding:15px;
+max-height:50vh;
+overflow-y:auto;
+}
+
+/* MUSIC — убираем ниже */
+.music-player{
+position:fixed;
+left:10px;
+bottom:55vh;
+width:150px;
+padding:10px;
+}
+
+.vinyl{
+width:45px;
+height:45px;
+}
+
+/* MODAL — full screen */
+.modal-content{
+width:100%;
+height:100%;
+max-width:none;
+border-radius:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:20px;
+}
+
+.close{
+font-size:28px;
+}
+
 }
 </style>
 </head>
@@ -285,10 +367,11 @@ cursor:pointer;
 <h3>Оплата</h3>
 <p>Перевод через Kaspi</p>
 <p style="font-weight:600;margin-top:10px;">
-Номер: +7 777 777 77 77
+Номер: +7 705 303 8427 
+Нұржан Ш.
 </p>
 <p style="font-size:13px;opacity:0.7;margin-top:10px;">
-После оплаты отправьте чек в WhatsApp
+После оплаты отправьте чек и скриншот заказа на WhatsApp
 </p>
 </div>
 </div>
@@ -423,3 +506,4 @@ isPlaying=false;
 
 </body>
 </html>
+
