@@ -417,7 +417,6 @@ cartItems.push({name,price,size});
 total+=price;
 renderCart();
 }
-
 function renderCart(){
 let html="";
 cartItems.forEach((item,index)=>{
@@ -429,6 +428,7 @@ html+=`
 });
 document.getElementById("cartItems").innerHTML=html;
 document.getElementById("total").innerText=total;
+document.getElementById("cartCount").innerText=cartItems.length;
 }
 
 function removeItem(index){
@@ -488,9 +488,16 @@ btn.innerText="Включить";
 isPlaying=false;
 }
 }
-</script>
+function toggleCart(){
+document.querySelector(".cart").classList.toggle("active");
+}
 
+</script>
+<div class="cart-toggle" onclick="toggleCart()">
+🛒 Корзина (<span id="cartCount">0</span>)
+</div>
 </body>
 </html>
+
 
 
