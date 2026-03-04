@@ -205,89 +205,75 @@ cursor:pointer;
 /* MOBILE */
 @media(max-width:768px){
 
+body{
+padding-bottom:70px;
+}
+
 /* HERO */
 .hero{
 height:70vh;
-padding:20px;
-}
-.hero h1{
-font-size:28px;
-letter-spacing:3px;
-}
-.countdown{
-font-size:16px;
 }
 
 /* PRODUCTS */
 .products{
 padding:30px 15px;
-gap:20px;
 }
 
-.card{
-padding:15px;
-border-radius:16px;
-}
-
-.card h3{
-font-size:18px;
-}
-
-.price{
-font-size:16px;
-}
-
-.size-btn{
-padding:8px 0;
-font-size:13px;
-}
-
-button{
-padding:12px;
-font-size:14px;
-}
-
-/* CART — превращаем в нижнюю панель */
+/* CART — скрыта по умолчанию */
 .cart{
 position:fixed;
 left:0;
 right:0;
-bottom:0;
+bottom:-100%;
 width:100%;
+height:60vh;
 border-radius:20px 20px 0 0;
-padding:15px;
-max-height:50vh;
+transition:0.4s ease;
 overflow-y:auto;
 }
 
-/* MUSIC — убираем ниже */
+/* Когда активна */
+.cart.active{
+bottom:0;
+}
+
+/* Кнопка корзины */
+.cart-toggle{
+position:fixed;
+bottom:10px;
+left:10px;
+right:10px;
+background:white;
+color:black;
+padding:15px;
+border-radius:15px;
+text-align:center;
+font-weight:600;
+z-index:1500;
+}
+
+/* MUSIC — маленькая и выше */
 .music-player{
 position:fixed;
-left:10px;
-bottom:55vh;
-width:150px;
-padding:10px;
+top:10px;
+right:10px;
+left:auto;
+bottom:auto;
+width:120px;
+padding:8px;
 }
 
 .vinyl{
-width:45px;
-height:45px;
+width:35px;
+height:35px;
 }
 
-/* MODAL — full screen */
+/* MODAL */
 .modal-content{
 width:100%;
 height:100%;
 max-width:none;
 border-radius:0;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding:20px;
-}
-
-.close{
-font-size:28px;
 }
 
 }
@@ -506,4 +492,5 @@ isPlaying=false;
 
 </body>
 </html>
+
 
